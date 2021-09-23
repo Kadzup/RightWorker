@@ -28,6 +28,13 @@ namespace
 	}
 }
 
+RightWorker::RightWorker(){}
+
+void RightWorker::SetBase(const std::string& input)
+{
+	this->mBase = input;
+}
+
 RightWorker::RightWorker(std::string& input)
 {
 	this->mBase = input;

@@ -1,10 +1,5 @@
 #pragma once
 
-#ifdef RIGHT_WORKER_EXPORTS
-#define RIGHT_WORKER_API __declspec(dllexport)
-#else
-#define RIGHT_WORKER_API __declspec(dllimport)
-#endif
 #include <string>
 #include <map>
 #include <vector>
@@ -19,11 +14,13 @@ private:
     std::list<std::string> mList;
 
 public:
+    RightWorker();
     RightWorker(std::string& input);
 
     ~RightWorker() = default;
 
     std::string GetBase();
+    void SetBase(const std::string& input);
 
     bool IsValid();
 

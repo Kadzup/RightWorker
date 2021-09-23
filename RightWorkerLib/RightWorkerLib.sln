@@ -10,6 +10,11 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RightWorkerCLI", "..\RightW
 		{2E76AB44-2578-4839-9022-3149616C1439} = {2E76AB44-2578-4839-9022-3149616C1439}
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RightWorkerMFC", "..\RightWorkerMFC\RightWorkerMFC.vcxproj", "{A450FA68-7079-4A82-B82F-03E3A8E899C6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{2E76AB44-2578-4839-9022-3149616C1439} = {2E76AB44-2578-4839-9022-3149616C1439}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -34,6 +39,14 @@ Global
 		{7D595CBF-57F2-4121-BE2D-DAD430D7AD70}.Release|x64.Build.0 = Release|x64
 		{7D595CBF-57F2-4121-BE2D-DAD430D7AD70}.Release|x86.ActiveCfg = Release|Win32
 		{7D595CBF-57F2-4121-BE2D-DAD430D7AD70}.Release|x86.Build.0 = Release|Win32
+		{A450FA68-7079-4A82-B82F-03E3A8E899C6}.Debug|x64.ActiveCfg = Debug|x64
+		{A450FA68-7079-4A82-B82F-03E3A8E899C6}.Debug|x64.Build.0 = Debug|x64
+		{A450FA68-7079-4A82-B82F-03E3A8E899C6}.Debug|x86.ActiveCfg = Debug|Win32
+		{A450FA68-7079-4A82-B82F-03E3A8E899C6}.Debug|x86.Build.0 = Debug|Win32
+		{A450FA68-7079-4A82-B82F-03E3A8E899C6}.Release|x64.ActiveCfg = Release|x64
+		{A450FA68-7079-4A82-B82F-03E3A8E899C6}.Release|x64.Build.0 = Release|x64
+		{A450FA68-7079-4A82-B82F-03E3A8E899C6}.Release|x86.ActiveCfg = Release|Win32
+		{A450FA68-7079-4A82-B82F-03E3A8E899C6}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
