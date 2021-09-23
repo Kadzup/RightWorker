@@ -109,6 +109,19 @@ void CLIUtill::ShowMenu()
 
 void CLIUtill::Help()
 {
+	// shortcuts
+	std::cout << std::endl << "Commands:" << std::endl;
+	std::cout << "Help menu - 'help' or 'h' to call help menu" << std::endl;
+	std::cout << "Main menu - 'menu' or 'm' to call main menu" << std::endl;
+	std::cout << "Open file - '1' or 'open' or 'o' to open input file" << std::endl;
+	std::cout << "Input via console - '2' or 'input' or 'i' to input base string via console" << std::endl;
+	std::cout << "Print base string - '3' or 'print' or 'p' to print base string" << std::endl;
+	std::cout << "Print map - '4' or 'map' or 'pm' to print std::map<char, std::string> value" << std::endl;
+	std::cout << "Print vector - '5' or 'vector' or 'pv' to print std::vector<std::pair<char, std::string>> value" << std::endl;
+	std::cout << "Print list - '6' or 'list' or 'pl' to print std::list<std::string> value" << std::endl;
+	std::cout << "Validate base string - '7' or 'validate' or 'v' to display if converted rules is valid" << std::endl;
+	std::cout << "Exit program - 'exit' or 'e' to close program" << std::endl << std::endl;
+	// input format
 	std::cout << "Base string format:" << std::endl;
 	std::cout << "Non-terminals should be Uppercase: A, B, S, etc." << std::endl;
 	std::cout << "Terminals should be Lowercase: a, b, c, etc." << std::endl;
@@ -116,7 +129,7 @@ void CLIUtill::Help()
 	std::cout << "Rules should be presented using ':'." << std::endl;
 	std::cout << "Example:" << std::endl;
 	std::cout << "S: abba | abC" << std::endl;
-	std::cout << "C: abaa | e" << std::endl;
+	std::cout << "C: abaa | e" << std::endl << std::endl;
 }
 
 
