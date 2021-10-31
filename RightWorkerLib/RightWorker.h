@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include <map>
+#include <unordered_map>
 #include <vector>
 #include <list>
 
@@ -9,7 +9,7 @@ class RightWorker final
 {
 private:
     std::string mBase;
-    std::map<char, std::string> mMap;
+    std::unordered_map<char, std::string> mMap;
     std::vector<std::pair<char, std::string>> mVector;
     std::list<std::string> mList;
 
@@ -26,7 +26,7 @@ public:
 
     void Convert();
 
-    std::map<char, std::string> ToMap();
+    std::unordered_map<char, std::string> ToMap();
     std::vector<std::pair<char, std::string>> ToVector();
     std::list<std::string> ToList();
 

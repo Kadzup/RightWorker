@@ -212,7 +212,7 @@ void CLIUtill::PrintMap()
 		return;
 	}
 
-	std::map<char, std::string> data = mpRightWorker->ToMap();
+	std::unordered_map<char, std::string> data = mpRightWorker->ToMap();
 
 	std::cout << "Map:" << std::endl;
 	

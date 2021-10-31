@@ -119,7 +119,7 @@ void RightWorker::Convert()
 	}
 }
 
-std::map<char, std::string> RightWorker::ToMap()
+std::unordered_map<char, std::string> RightWorker::ToMap()
 {
 	return mMap;
 }
@@ -136,13 +136,19 @@ std::list<std::string> RightWorker::ToList()
 
 bool RightWorker::IsValid()
 {
-	bool isValid = true;
 	// (Wikipedia)
 	//  A right-regular grammar (also called right-linear grammar) is a formal grammar (N, Σ, P, S) in which all production rules in P are of one of the following forms:
 	//	A -> a
 	//	A -> aB
 	//	A -> ε
 	// valid if all non-terminals in vector of pairs have:
+
+	if (mVector.size() == 0) {
+		return false;
+	}
+
+	bool isValid = true;
+
 	for (auto it = mVector.begin(); it != mVector.end(); ++it)
 	{
 		std::string value = it->second;
@@ -166,6 +172,22 @@ bool RightWorker::IsValid()
 		}
 		else
 		{
+			isValid = false;
+			break;
+		}
+	}
+
+	if (!isValid) {
+		return isValid;
+	}
+
+	// check if all nt has rules
+	for (auto item : mMap) {
+		if (item.second.empty()) {
+			isValid = false;
+			break;
+		}
+		else if (mMap.find(item.first) == mMap.end()) {
 			isValid = false;
 			break;
 		}
