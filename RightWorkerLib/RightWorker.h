@@ -8,10 +8,10 @@
 class RightWorker final
 {
 private:
-    std::string mBase;
-    std::unordered_map<char, std::string> mMap;
-    std::vector<std::pair<char, std::string>> mVector;
-    std::list<std::string> mList;
+    std::string m_sBase;
+    std::unordered_map<char, std::string> m_Map;
+    std::vector<std::pair<char, std::string>> m_Vector;
+    std::list<std::string> m_List;
 
 public:
     RightWorker();

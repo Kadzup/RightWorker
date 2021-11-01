@@ -23,6 +23,7 @@
 IMPLEMENT_DYNCREATE(CRightWorkerWinDoc, CDocument)
 
 BEGIN_MESSAGE_MAP(CRightWorkerWinDoc, CDocument)
+	//ON_COMMAND(ID_FILE_SAVE, SaveDocument)
 END_MESSAGE_MAP()
 
 
@@ -56,15 +57,33 @@ BOOL CRightWorkerWinDoc::OnNewDocument()
 
 void CRightWorkerWinDoc::Serialize(CArchive& ar)
 {
+	// save
 	if (ar.IsStoring())
 	{
-		// TODO: add storing code here
+		ar << m_sBody;
 	}
+	// load
 	else
 	{
-		// TODO: add loading code here
+		ar >> m_sBody;
 	}
 }
+
+/*BOOL CRightWorkerWinDoc::DoSave(LPCTSTR lpszPathName, BOOL bReplace)
+{
+	CFileDialog fd(bReplace);
+
+	fd.m_ofn.lpstrFilter = _T("RightWorker Files(*.rwk)\0*.rwk\0\0");
+	fd.m_ofn.lpstrDefExt = _T("rwk");
+	fd.m_ofn.lpstrTitle = _T("Save as RightWorker");
+
+	if (fd.DoModal() == IDOK)
+	{
+		Serialize();
+	}
+
+	return TRUE;
+}*/
 
 #ifdef SHARED_HANDLERS
 

@@ -32,27 +32,30 @@ RightWorker::RightWorker(){}
 
 void RightWorker::SetBase(const std::string& input)
 {
-	this->mBase = input;
+	this->m_sBase = input;
 }
 
 RightWorker::RightWorker(std::string& input)
 {
-	this->mBase = input;
+	this->m_sBase = input;
 
-	Convert();
 }
 
 std::string RightWorker::GetBase()
 {
-	return mBase;
+	return m_sBase;
 }
 
 
 void RightWorker::Convert()
 {
+	m_Map.clear();
+	m_Vector.clear();
+	m_List.clear();
+
 	// split base
 	std::vector<std::string> lines;
-	std::istringstream f(mBase);
+	std::istringstream f(m_sBase);
 	std::string s;
 
 	while (std::getline(f, s, '\n')) {
@@ -76,17 +79,17 @@ void RightWorker::Convert()
 			n = trim(n);
 			t = trim(t);
 
-			mMap[n[0]] = t;
+			m_Map[n[0]] = t;
 		}
 	}
 
 	// create vector
-	for (auto mapIt = mMap.begin(); mapIt != mMap.end(); ++mapIt)
+	for (auto mapIt = m_Map.begin(); mapIt != m_Map.end(); ++mapIt)
 	{
 		// if no '|'
 		if (mapIt->second.find_first_of('|') == std::string::npos)
 		{
-			mVector.push_back({ mapIt->first, mapIt->second });
+			m_Vector.push_back({ mapIt->first, mapIt->second });
 		}
 		else
 		{
@@ -102,36 +105,36 @@ void RightWorker::Convert()
 
 			for (const std::string& part : parts)
 			{
-				mVector.push_back({ mapIt->first, part });
+				m_Vector.push_back({ mapIt->first, part });
 			}
 		}
 	}
 
 	// create list
-	for (auto vecIt = mVector.begin(); vecIt != mVector.end(); ++vecIt)
+	for (auto vecIt = m_Vector.begin(); vecIt != m_Vector.end(); ++vecIt)
 	{
 		// in case that we have std::format only in c++ 20, and "[" + char will give us not an concatenates, we should concatenates them all in diff ways 
 		std::string formatedLine;
 		formatedLine += "[";
 		formatedLine += vecIt->first;
 		formatedLine += "] -> " + vecIt->second;
-		mList.push_back(formatedLine);
+		m_List.push_back(formatedLine);
 	}
 }
 
 std::unordered_map<char, std::string> RightWorker::ToMap()
 {
-	return mMap;
+	return m_Map;
 }
 
 std::vector<std::pair<char, std::string>> RightWorker::ToVector()
 {
-	return mVector;
+	return m_Vector;
 }
 
 std::list<std::string> RightWorker::ToList()
 {
-	return mList;
+	return m_List;
 }
 
 bool RightWorker::IsValid()
@@ -143,13 +146,13 @@ bool RightWorker::IsValid()
 	//	A -> ε
 	// valid if all non-terminals in vector of pairs have:
 
-	if (mVector.size() == 0) {
+	if (m_Vector.size() == 0) {
 		return false;
 	}
 
 	bool isValid = true;
 
-	for (auto it = mVector.begin(); it != mVector.end(); ++it)
+	for (auto it = m_Vector.begin(); it != m_Vector.end(); ++it)
 	{
 		std::string value = it->second;
 
@@ -182,12 +185,12 @@ bool RightWorker::IsValid()
 	}
 
 	// check if all nt has rules
-	for (auto item : mMap) {
+	for (auto item : m_Map) {
 		if (item.second.empty()) {
 			isValid = false;
 			break;
 		}
-		else if (mMap.find(item.first) == mMap.end()) {
+		else if (m_Map.find(item.first) == m_Map.end()) {
 			isValid = false;
 			break;
 		}
